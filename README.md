@@ -1,47 +1,68 @@
-# Data-Science
-<div align="center">
-<h1 align="center">
-Data Science
-</h3>
- 
-Collection of all my data science projects.
+# Dataset
 
-</div>
- 
+## First inning ball to ball coverage of:
 
-## How to Download the Code in This Repository to Your Local Machine
+* 1188 ODI matches -> data/odi.csv
+* 1474 T-20 matches -> data/t20.csv
+* 617 IPL matches -> data/ipl.csv
 
-To download the code in this repo, you can simply use git clone
-```bash
-git clone https://github.com/Rutuja-07/Data-science
+## Each dataset consists of the following columns:
+
+* mid -> Each match is given a unique number
+* date -> When the match happened
+* venue -> Stadium where match is being played
+* bat_team -> Batting team name
+* bowl_team -> Bowling team name
+* batsman -> Batsman name who faced that ball
+* bowler -> Bowler who bowled that ball
+* runs -> Total runs scored by team at that instance
+* wickets -> Total wickets fallen at that instance
+* overs -> Total overs bowled at that instance
+* runs_last_5 -> Total runs scored in last 5 overs
+* wickets_last_5 -> Total wickets that fell in last 5 overs
+* striker -> max(runs scored by striker, runs scored by non-striker)
+* non-striker -> min(runs scored by striker, runs scored by non-striker)
+* total -> Total runs scored by batting team after first innings
+
+# Prediction Algorithm and Accuracy
+
+## Algorithms Used
+
+1. Linear Regression -> linear_regression.py
+2. Random Forest Regression -> random_forest_regression.py
+
+## Features and Label Used
+
+* Features: [runs,wickets,overs,striker,non-striker]
+* Label: [total]
+
+## Accuracy in terms of [R Square Value,Custom Accuracy]
+
+1. Linear Regression
+   * ODI matches  -> [52,43]
+   * T-20 matches -> [52,44]
+   * IPL matches  -> [50,44]
+2. Random Forest Regression
+   * ODI matches  -> [79,77]
+   * T-20 matches -> [64,59]
+   * IPL matches  -> [67,65]
+
+**Note:**
+Custom Accuracy is defined on the basis of difference between the predicted score and actual score. If this difference falls below a particular thresold, we count it as a correct prediction.
+
+* T-20 thresold: 10
+* ODI thresold: 20
+
+# Testing the code
+
+```
+git clone https://github.com/codophobia/CricketScorePredictor.git
+cd CricketScorePredictor
+virtualenv -p python3 venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+python3 linear_regression.py or random_forest_regressor.py
 ```
 
-# Contents
-1. [LinearRegression - Stats model](#mlops)
-2. [Testing](#testing)
-3. [Productive Tools](#productive-tools)
-4. [Python Helper Tools](#python-helper-tools)
-5. [Tools for Deployment](#tools-for-deployment)
-6. [Speed-up Tools](#speed-up-tools)
-7. [Math Tools](#math-tools)
-8. [Machine Learning](#machine-learning)
-9. [Natural Language Processing](#natural-language-processing)
-10. [Computer Vision](#computer-vision)
-11. [Time Series](#time-series)
-12. [Feature Engineering](#feature-engineering)
-13. [Visualization](#visualization)
-14. [Mathematical Programming](#mathematical-programming)
-15. [Scraping](#scraping)
-16. [Python](#python)
-17. [Terminal](#terminal)
-18. [Linear Algebra](#linear-algebra)
-19. [Data Structure](#data-structure)
-20. [Statistics](#statistics)
-21. [Web Applications](#web-applications)
-22. [Share Insights](#share-insights)
-23. [Cool Tools](#cool-tools)
-24. [Learning Tips](#learning-tips)
-25. [Productive Tips](#productive-tips)
-26. [VSCode](#vscode)
-27. [Book Review](#book-review)
-28. [Data Science Portfolio](#data-science-portfolio)
+**Note:**
+I have hardcoded the ODI dataset in the code. You can change it to other datasets and test it. You can also play with other features which are included in the dataset. You can also play along with the Custom accuracy thresolds.
